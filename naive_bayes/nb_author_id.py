@@ -12,7 +12,7 @@
     
 import sys
 from time import time
-sys.path.append("../tools/")
+sys.path.append("/Users/yaru/Documents/learning/DataScience/MachineLearning/IntroToMachineLearning/tools/")
 from email_preprocess import preprocess
 
 
