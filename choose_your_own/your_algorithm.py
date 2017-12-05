@@ -30,12 +30,26 @@ plt.show()
 
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
+# K nearest neighbors
+from sklearn.neighbors import KNeighborsClassifier
+clf =  KNeighborsClassifier(n_neighbors=1, algorithm='auto', weights='distance')
+clf.fit(features_train, labels_train)
+clf.predict (features_test)
+print "accuracy for K Nearest Neighbors: ", clf.score(features_test,labels_test)
 
+# AdaBoost
+from sklearn.ensemble import AdaBoostClassifier
+clf = AdaBoostClassifier(n_estimators = 10)
+clf.fit (features_train, labels_train)
+clf.predict (features_test)
+print "accuracy for AdaBoost: ", clf.score(features_test,labels_test)
 
-
-
-
-
+# Random forest
+from sklearn.ensemble import RandomForestClassifier
+clf = RandomForestClassifier()
+clf.fit (features_train, labels_train)
+clf.predict (features_test)
+print "accuracy for Random Forest: ", clf.score(features_test,labels_test)
 
 
 try:
