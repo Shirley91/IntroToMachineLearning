@@ -19,4 +19,10 @@ import pickle
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
+people = 0
+
+for person in enron_data:
+	people += 1
+
+print "people:", people 
 
