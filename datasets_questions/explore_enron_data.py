@@ -44,3 +44,12 @@ print "Total POIs:", poiCount_total
 print "James Prentice:", enron_data["PRENTICE JAMES"]["total_stock_value"]
 print "Wesley Colwell:", enron_data["COLWELL WESLEY"]["from_this_person_to_poi"]
 print "Jeffrey K Skilling:", enron_data["SKILLING JEFFREY K"]["exercised_stock_options"]
+
+most_paid = ''
+highest_payment = 0
+
+for key in ('LAY KENNETH L', 'FASTOW ANDREW S', 'SKILLING JEFFREY K'):
+	if enron_data[key]['total_payments'] > highest_payment:
+		highest_payment = enron_data[key]['total_payments']
+		most_paid = key
+print most_paid, highest_payment
