@@ -53,3 +53,27 @@ for key in ('LAY KENNETH L', 'FASTOW ANDREW S', 'SKILLING JEFFREY K'):
 		highest_payment = enron_data[key]['total_payments']
 		most_paid = key
 print most_paid, highest_payment
+
+# how is an unfilled feature denoted?
+print(enron_data['SKILLING JEFFREY K'])
+
+# how many folks have a quantified salary?
+print len(dict((key,value) for key, value in enron_data.items() if value["salary"] != 'NaN'))
+
+# how many with a known email address?
+print len(dict((key,value) for key, value in enron_data.items() if value["email_address"] != 'NaN'))
+
+# percentage of people in the dataset have 'NaN' for their total payments?
+no_total_payments = len(dict((key,value) for key, value in enron_data.items() if value["total_payments"] == 'NaN'))
+print float(no_total_payments) / len(enron_data) * 100
+
+#percentage of POIs in the data have 'NaN' for their total payments?
+POIs = dict((key,value) for key, value in enron_data.items() if value['poi'] == True)
+no_total_payments_POIs = len(dict((key,value) for key, value in POIs.items() if value["total_payments"] == 'NaN'))
+print float(no_total_payments_POIs) / len(POIs) * 100
+
+# new number of people with NaN total_payments with adding 10 POIs with NaN total_payments
+print len(enron_data) + 10
+print no_total_payments + 10
+print len(POIs) + 10
+print float(10) / (len(POIs) + 10) * 100
