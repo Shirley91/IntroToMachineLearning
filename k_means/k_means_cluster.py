@@ -64,7 +64,49 @@ plt.show()
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
+from sklearn.cluster import KMeans
+data2 = featureFormat(data_dict, features_list )
+poi, finance_features = targetFeatureSplit( data2 )
+clf = KMeans(n_clusters=2)
+pred = clf.fit_predict(finance_features)
+Draw(pred, finance_features, poi, name="clusters_before_scaling.pdf", f1_name=feature_1, f2_name=feature_2)
 
+### max and min values taken by "exercised_stock_options"
+exeMin = 10000000
+exeMax = 0
+
+for k in data_dict:
+	exe = data_dict[k]["exercised_stock_options"]
+	if exe != 'NaN':
+		if exe < exeMin:
+			exeMin = exe
+		if exe > exeMax:
+			exeMax = exe
+print "min1: ", exeMin
+print "max1: ", exeMax
+
+### max and min values taken by "salary"
+salMin = 10000000
+salMax = 0
+
+for k in data_dict:
+	sal = data_dict[k]["salary"]
+	if sal != 'NaN':
+		if sal < salMin:
+			salMin = sal
+		if sal > salMax:
+			salMax = sal
+print "min2: ", salMin
+print "max2: ", salMax
+
+
+### rescale salary and exercised_stock_options
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+data3 = featureFormat(data_dict, [feature_1, feature_2])
+data3_scaled = scaler.fit_transform(data3)
+print scaler.transform([[200000.,1000000.]])
 
 
 
