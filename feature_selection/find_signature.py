@@ -60,7 +60,7 @@ print 'Feature Ranking: '
 for i in range(10):
     print "{} feature no.{} ({})".format(i+1,indices[i],importances[indices[i]])
 
-vectorizer.get_features_names()[33614]
+#vectorizer.get_features_names()[33614]
 
 # another method
 problemWordIndices = []
